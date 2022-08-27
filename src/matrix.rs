@@ -1,5 +1,7 @@
 mod f64_impl;
 
+use std::ops::Add;
+
 /// An n-dimensional generic matrix.
 pub struct Matrix<T: Clone> {
     /// Holds the data of the matrix in contiguous memory.
@@ -53,7 +55,7 @@ impl<T: Clone> Matrix<T> {
     }
 }
 
-impl<T: Default + Clone> Matrix<T> {
+impl<T: Clone + Default> Matrix<T> {
     pub fn from_default(dims: &[usize]) -> Self {
         Self::fill(dims, T::default())
     }
